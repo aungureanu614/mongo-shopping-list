@@ -10,7 +10,7 @@ var should = chai.should();
 var app = server.app;
 
 chai.use(chaiHttp);
-
+var putId;
 describe('Shopping List', function() {
     before(function(done) {
         server.runServer(function() {
@@ -62,35 +62,35 @@ describe('Shopping List', function() {
                 res.body.should.have.property('_id');
                 res.body.name.should.be.a('string');
                 res.body.name.should.equal('Kale');
-            
+                putId = res.body._id;
                 done();
             });
     });
     
    it('should edit an item on PUT', function(done) {
         chai.request(app)
-            .put('/items/57dd9f7801a8b3af6ae69974')
-            .send({'name':'cake', '_id':'57dd9f7801a8b3af6ae69974'})
+            .put('/items/' + putId)
+            .send({'name':'cake'})
             .end(function(err, res){
                 should.equal(err, null);
                 res.should.have.status(201);
                 res.should.be.json;
-                res.body.should.be.a('object');
-                /*res.body.should.have.property('name');
-                res.body.name.should.be.a('string');
-                res.body.id.should.be.a('string');
-                res.body.id.should.equal('57dd9f7801a8b3af6ae69974');
-                res.body.name.should.equal('cake');*/
+                res.body.ok.should.equal(1);
+                res.body.nModified.should.equal(1);
+                res.body.n.should.equal(1);
+                
                
                 done();
             });
     });
     it('should delete an item on DELETE', function(done) {
         chai.request(app)
-            .delete('/items/57dd9f7801a8b3af6ae69974')
+            .delete('/items/' + putId)
             .end(function(err, res){
                should.equal(err, null);
                 res.should.be.json;
+                res.body.ok.should.equal(1);
+                res.body.n.should.equal(1);
                 
                 done();
                

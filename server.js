@@ -60,17 +60,17 @@ app.post('/items', function(req, res) {
 
 app.put('/items/:id', function(req, res){
     Item.update(
-        { _id: req.params.id }, { $set: {name:req.body.name}
-            
-        }, function(err, item){
-        if(err){
-            return res.status(500).json({
-                message: "Internal Server Error"
+        { _id: req.params.id }, {name:req.body.name}, function(err, item){
+             if(err){
+                return res.status(500).json({
+                     message: "Internal Server Error"
             });
         }
         
         res.status(201).json(item);
     });
+    
+   
 });
 
 app.delete('/items/:id',function(req, res){
