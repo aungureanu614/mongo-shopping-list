@@ -22,6 +22,13 @@ describe('Shopping List', function() {
         });
     });
     
+
+    after(function(done) {
+        Item.remove(function() {
+            done();
+        });
+    });
+    
      it('should list items on GET', function(done) {
         chai.request(app)
             .get('/items')
@@ -89,12 +96,5 @@ describe('Shopping List', function() {
                
             });
     });
-
-    after(function(done) {
-        Item.remove(function() {
-            done();
-        });
-    });
-    
     
 });
