@@ -8,3 +8,10 @@ addons:
     - mongodb-3.2-precise
     packages:
     - mongodb-org-server
+deploy:
+  provider: heroku
+  api_key:
+    secure: fzyWRegLdxCPf0cQerBK+4F1pe7SNXCrK6jDkeGi8F8MAb7bwawGIhfjTxB3EBWLHKz2tYCz4uBxmEXwEOI7UKc8g5u9a0uvHJmEGqRdjqH1EFwmI47EKIGGAbleiMqlLesudfch2TcWMTZS6O6EU8Ojalu2QC//FecU1LZQikc6U2R54Irsa3x5tdM5eJgo78xy/xMGG2UtEnUgsOh8TvtU0n+f2qrZSvaYpLJgCcCUE416i7jTJP9APEh/lZt5g/gKUUh4bcyP1E8RKu95nSH99GYvK4JsAdrJOe1SBr5qEEgbuFUITH2TSMHR/r0mjMo7oaH4RigQ2Ni3jiI65XXCXsKMQvSBj2r/F4V6u3m+lDqVg5U08zPi+67hMNomc9z81IQe4tk0wXvtvwmv8VlqVq4yqUPibs4gPoInf4kkPhkA+7IOiyCU1kB1GnsPetu4P+YOGn4MDYokj8We6hsNC8qL8kTcYZ6+aieaZy4WdYkqzgBxoSG/VnutjaVvBGPFj9Wa2bwieRgRYmGKLrkFvdz/DC3+n1XX9D3RUjbAY/AIqTAap7MxsCGnucKDlnSxJtv3yUofJMWqCcWTanUHNr53PgxNtCEJrwiwLvnkUBTWoS1XBHUEzR3gAqDT+6HKVHEoeMBk+mal0AL3Lze63kISD4EQ/uLMCIp3ACs=
+  app: secret-forest-23371
+  on:
+    repo: aungureanu614/mongo-shopping-list
